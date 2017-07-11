@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="97a8756da67c4374b4e4bd606f4f6ea3" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="MaerskDDACdbModel.Booking" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MaerskDDACdbModel.Container" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MaerskDDACdbModel.Employee" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MaerskDDACdbModel.Ship" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MaerskDDACdbModel.ShipYard" Width="1.5" PointX="4.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MaerskDDACdbModel.Warehouse" Width="1.5" PointX="6.125" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="MaerskDDACdbModel.FK_dbo_Bookings_dbo_Containers_ContainerID" ManuallyRouted="false" />
+        <AssociationConnector Association="MaerskDDACdbModel.FK_dbo_Bookings_dbo_Ships_ShipCode" ManuallyRouted="false" />
+        <AssociationConnector Association="MaerskDDACdbModel.FK_dbo_Bookings_dbo_ShipYards_ShipyardID" ManuallyRouted="false" />
+        <AssociationConnector Association="MaerskDDACdbModel.FK_dbo_Bookings_dbo_Warehouses_WarehouseID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
