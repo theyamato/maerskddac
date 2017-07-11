@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MaerskDDACdbModelStoreContainer" CdmEntityContainer="MaerskDDACdbEntities">
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="MaerskDDACdbModel.Booking">
+        <MappingFragment StoreEntitySet="Bookings">
+          <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+          <ScalarProperty Name="WarehouseID" ColumnName="WarehouseID" />
+          <ScalarProperty Name="ShipCode" ColumnName="ShipCode" />
+          <ScalarProperty Name="ShipyardID" ColumnName="ShipyardID" />
+          <ScalarProperty Name="ContainerID" ColumnName="ContainerID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Departure" ColumnName="Departure" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Containers">
+      <EntityTypeMapping TypeName="MaerskDDACdbModel.Container">
+        <MappingFragment StoreEntitySet="Containers">
+          <ScalarProperty Name="ContainerID" ColumnName="ContainerID" />
+          <ScalarProperty Name="ContainerName" ColumnName="ContainerName" />
+          <ScalarProperty Name="ContainerDescription" ColumnName="ContainerDescription" />
+          <ScalarProperty Name="ContainerAmount" ColumnName="ContainerAmount" />
+          <ScalarProperty Name="ContainerWeight" ColumnName="ContainerWeight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="MaerskDDACdbModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeePass" ColumnName="EmployeePass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ships">
+      <EntityTypeMapping TypeName="MaerskDDACdbModel.Ship">
+        <MappingFragment StoreEntitySet="Ships">
+          <ScalarProperty Name="ShipCode" ColumnName="ShipCode" />
+          <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+          <ScalarProperty Name="ShipDescription" ColumnName="ShipDescription" />
+          <ScalarProperty Name="NumberOfContainersCarried" ColumnName="NumberOfContainersCarried" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShipYards">
+      <EntityTypeMapping TypeName="MaerskDDACdbModel.ShipYard">
+        <MappingFragment StoreEntitySet="ShipYards">
+          <ScalarProperty Name="ShipyardID" ColumnName="ShipyardID" />
+          <ScalarProperty Name="ShipYardName" ColumnName="ShipYardName" />
+          <ScalarProperty Name="CurrentNumberOfShipsDocked" ColumnName="CurrentNumberOfShipsDocked" />
+          <ScalarProperty Name="ShipYardDockNumber" ColumnName="ShipYardDockNumber" />
+          <ScalarProperty Name="TotalNumberOfContainers" ColumnName="TotalNumberOfContainers" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Warehouses">
+      <EntityTypeMapping TypeName="MaerskDDACdbModel.Warehouse">
+        <MappingFragment StoreEntitySet="Warehouses">
+          <ScalarProperty Name="WarehouseID" ColumnName="WarehouseID" />
+          <ScalarProperty Name="WarehouseName" ColumnName="WarehouseName" />
+          <ScalarProperty Name="Supervisor" ColumnName="Supervisor" />
+          <ScalarProperty Name="NumberOfContainersStored" ColumnName="NumberOfContainersStored" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

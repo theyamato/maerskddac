@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MaerskDDACdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="BookingID" />
+    </Key>
+    <Property Name="BookingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WarehouseID" Type="int" Nullable="false" />
+    <Property Name="ShipCode" Type="int" Nullable="false" />
+    <Property Name="ShipyardID" Type="int" Nullable="false" />
+    <Property Name="ContainerID" Type="int" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Time" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Departure" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Destination" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Containers">
+    <Key>
+      <PropertyRef Name="ContainerID" />
+    </Key>
+    <Property Name="ContainerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContainerName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ContainerDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ContainerAmount" Type="int" Nullable="false" />
+    <Property Name="ContainerWeight" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmployeePass" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ships">
+    <Key>
+      <PropertyRef Name="ShipCode" />
+    </Key>
+    <Property Name="ShipCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShipName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ShipDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NumberOfContainersCarried" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShipYards">
+    <Key>
+      <PropertyRef Name="ShipyardID" />
+    </Key>
+    <Property Name="ShipyardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShipYardName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CurrentNumberOfShipsDocked" Type="int" Nullable="false" />
+    <Property Name="ShipYardDockNumber" Type="int" Nullable="false" />
+    <Property Name="TotalNumberOfContainers" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Warehouses">
+    <Key>
+      <PropertyRef Name="WarehouseID" />
+    </Key>
+    <Property Name="WarehouseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WarehouseName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Supervisor" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NumberOfContainersStored" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_Bookings_dbo_Containers_ContainerID">
+    <End Role="Containers" Type="Self.Containers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Containers">
+        <PropertyRef Name="ContainerID" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="ContainerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Bookings_dbo_Ships_ShipCode">
+    <End Role="Ships" Type="Self.Ships" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ships">
+        <PropertyRef Name="ShipCode" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="ShipCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Bookings_dbo_ShipYards_ShipyardID">
+    <End Role="ShipYards" Type="Self.ShipYards" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShipYards">
+        <PropertyRef Name="ShipyardID" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="ShipyardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Bookings_dbo_Warehouses_WarehouseID">
+    <End Role="Warehouses" Type="Self.Warehouses" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouses">
+        <PropertyRef Name="WarehouseID" />
+      </Principal>
+      <Dependent Role="Bookings">
+        <PropertyRef Name="WarehouseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MaerskDDACdbModelStoreContainer">
+    <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Containers" EntityType="Self.Containers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ships" EntityType="Self.Ships" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShipYards" EntityType="Self.ShipYards" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Warehouses" EntityType="Self.Warehouses" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_Bookings_dbo_Containers_ContainerID" Association="Self.FK_dbo_Bookings_dbo_Containers_ContainerID">
+      <End Role="Containers" EntitySet="Containers" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Bookings_dbo_Ships_ShipCode" Association="Self.FK_dbo_Bookings_dbo_Ships_ShipCode">
+      <End Role="Ships" EntitySet="Ships" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Bookings_dbo_ShipYards_ShipyardID" Association="Self.FK_dbo_Bookings_dbo_ShipYards_ShipyardID">
+      <End Role="ShipYards" EntitySet="ShipYards" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Bookings_dbo_Warehouses_WarehouseID" Association="Self.FK_dbo_Bookings_dbo_Warehouses_WarehouseID">
+      <End Role="Warehouses" EntitySet="Warehouses" />
+      <End Role="Bookings" EntitySet="Bookings" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
